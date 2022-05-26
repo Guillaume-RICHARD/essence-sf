@@ -1,4 +1,4 @@
-# Link To REad
+# Link To Read
 - [Twig Helpers, entrypoints.json & yarn Scripts](https://symfonycasts.com/screencast/webpack-encore/twig-helpers-scripts)
 - [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 - [Tu vois Bootstrap ? Bah, c'est pas ça](https://www.knacss.com/)
