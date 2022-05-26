@@ -1,0 +1,36 @@
+nav {
+  margin: 0 auto 50px auto;
+  width: 100%;
+  height: $navig_height;
+  background-color: $navig_bg_color;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    li {
+      width: 100%;
+
+      a {
+        width: 100%;
+        height: $navig_height;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        color: white;
+
+        &:hover {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: $border-lighter;
+        }
+      }
+    }
+  }
+}
+
