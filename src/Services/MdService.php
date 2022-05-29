@@ -58,4 +58,24 @@ class MdService
 
         return $articles;
     }
+
+    public function readArticle($id) {
+        $frontMatter = new FrontMatter();
+
+        $articles = [];
+
+        $handle = fopen($this->dir."/articles/".$id."/index.md", 'r');
+        $markdown = fread($handle, filesize($this->file));
+
+        $hasFrontMatter = $frontMatter->exists($markdown);
+        if ($hasFrontMatter) {
+            $document = $frontMatter->parse($markdown);
+            $articles = [
+                'data' => $document->getData(),
+                'content' => $document->getContent()
+            ];
+        }
+
+        return $articles;
+    }
 }

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ data.title }}{% endblock %}
+{% block description %}{{ data.description }}{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_blog') }}">Retour au Blog</a>
+    {% apply markdown_to_html %}
+        {{ text }}
+    {% endapply %}
+
+{% endblock %}
