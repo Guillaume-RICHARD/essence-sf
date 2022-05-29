@@ -1,10 +1,10 @@
 ---
-layout: Page
-title: Blog
+layout: Post
+title: News du 27/05/2022
 description: Lorem ipsum dolor sit amet ...
 tags:
-- test
-- example
+- News
+- Prix
 ---
 
 ## Blog

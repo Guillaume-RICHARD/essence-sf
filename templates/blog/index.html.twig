@@ -4,18 +4,25 @@
 {% block description %}{{ data.description }}{% endblock %}
 
 {% block body %}
-    <div class="example-wrapper">
-        {% apply markdown_to_html %}
-            {{ text }}
-        {% endapply %}
-    </div>
+    {% apply markdown_to_html %}
+        {{ text }}
+    {% endapply %}
 
-    {% for article in articles %}
-        <div class="example-wrapper">
-            {% apply markdown_to_html %}
-                {{ article.content }}
-            {% endapply %}
+    <div class="layout-hero blog">
+        <div class="grid grid-cols-3">
+        {% for article in articles %}
+                <div>
+                    <h3>{{ article.data.title }}</h3>
+                    {% apply markdown_to_html %}
+                        <ul class="tags">
+                            {% for tag in article.data.tags %}
+                                <li>{{ tag }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endapply %}
+                </div>
+        {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 
 {% endblock %}
