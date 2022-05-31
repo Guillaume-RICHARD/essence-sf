@@ -56,7 +56,7 @@ class MdService
             }
         }
 
-        return $articles;
+        return array_reverse($articles);
     }
 
     public function readArticle($id) {

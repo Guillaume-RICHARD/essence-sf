@@ -11,15 +11,13 @@
     <div class="layout-hero blog">
         <div class="grid grid-cols-3">
         {% for article in articles %}
-                <div>
+                <div class="mx-16">
                     <h3><a href="{{ path('app_article', {'id':article.data.id}) }}">{{ article.data.title }}</a></h3>
-                    {% apply markdown_to_html %}
-                        <ul class="tags">
-                            {% for tag in article.data.tags %}
-                                <li>{{ tag }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endapply %}
+                    <p>
+                        {% apply markdown_to_html %}
+                            {{ article.data.description }}
+                        {% endapply %}
+                    </p>
                 </div>
         {% endfor %}
         </div>

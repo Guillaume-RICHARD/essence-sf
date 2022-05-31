@@ -2,7 +2,7 @@
 id: 20220523-1200
 layout: Blog
 title: News du 23/05/2022
-description: Lorem ipsum dolor sit amet ...
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis placerat porttitor dui, ut consequat nibh vulputate convallis. Duis pretium semper.
 tags:
 - test
 - example

@@ -2,7 +2,7 @@
 id: 20220527-1805
 layout: Blog
 title: News du 27/05/2022
-description: Lorem ipsum dolor sit amet ...
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut maximus nisi sed vestibulum convallis. Curabitur ullamcorper vestibulum sapien vitae blandit.
 tags:
 - News
 - Prix

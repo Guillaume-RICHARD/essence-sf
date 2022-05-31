@@ -2,10 +2,12 @@
 id: 20220521-1200
 layout: Blog
 title: 1er Article
-description: Lorem ipsum dolor sit amet ...
+description: 1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in efficitur nibh, et cursus mauris. Nunc ac lectus velit. Etiam. 🐅
 tags:
 - test
 - example
+- News
+- Prix
 ---
 
 ## 1er Article

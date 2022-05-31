@@ -20,7 +20,6 @@ class BlogController extends AbstractController
         extract($string, EXTR_PREFIX_SAME,"tdt");
 
         $articles  = $txt->readAllArticles();
-        // echo "<pre>"; var_dump($articles); echo "</pre>"; die;
 
         return $this->render('blog/index.html.twig', [
             'data'      => $data,

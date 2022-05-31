@@ -2,7 +2,7 @@
 id: 20220527-2052
 layout: blog
 title: News du 27/05/2022 (Partie 2)
-description: Lorem ipsum dolor sit amet ...
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus porttitor, scelerisque erat sed, iaculis massa. Donec et leo.
 tags:
 - News
 - Prix

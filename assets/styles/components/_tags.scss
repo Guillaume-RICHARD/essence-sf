@@ -1,0 +1,14 @@
+ul.tags {
+  display: inline-flex;
+  margin-left: -15px;
+
+  li {
+    border: 2px solid $navig_bg_color;
+    list-style: none;
+    margin: 0px 4px;
+    padding: 0 20px;
+
+    &:first-child { margin: 0px 4px 0px 0px; }
+    &:last-child { margin: 0px 0px 0px 4px; }
+  }
+}

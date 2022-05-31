@@ -5,6 +5,11 @@
 
 {% block body %}
     <a href="{{ path('app_blog') }}">Retour au Blog</a>
+    <ul class="tags">
+        {% for tag in data.tags %}
+            <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
     {% apply markdown_to_html %}
         {{ text }}
     {% endapply %}
