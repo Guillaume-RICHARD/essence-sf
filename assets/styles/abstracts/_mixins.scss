@@ -1,0 +1,6 @@
+@mixin icon-color($colour: $font_color_white){
+  color: $colour;
+  i {
+    color: $colour;
+  }
+}

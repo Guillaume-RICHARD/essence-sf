@@ -3,6 +3,11 @@
   background: $border-lighter;
   color: $font_color_white;
 
+  h2 {
+    padding: 0 15px;
+    color: $font_color_white;
+  }
+
   h3 {
     a {
       text-decoration: none;
@@ -15,5 +20,11 @@
   }
   p {
     text-align: justify;
+
+    a {
+      display: flex;
+      font-size: smaller;
+      margin-right: 15px;
+    }
   }
 }

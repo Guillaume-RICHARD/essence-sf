@@ -9,3 +9,10 @@
     padding: 2px 6px;
   }
 }
+
+a {
+  display: inline-flex;
+
+  &.dark-icon {@include icon-color($navig_bg_color);}
+  &.white-icon {@include icon-color;}
+}
