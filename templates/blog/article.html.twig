@@ -1,17 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ data.title }}{% endblock %}
-{% block description %}{{ data.description }}{% endblock %}
+{% block title %}{{ article.data.title }}{% endblock %}
+{% block description %}{{ article.data.description }}{% endblock %}
 
 {% block body %}
-    <a href="{{ path('app_blog') }}">Retour au Blog</a>
-    <ul class="tags">
-        {% for tag in data.tags %}
-            <li>{{ tag }}</li>
-        {% endfor %}
-    </ul>
-    {% apply markdown_to_html %}
-        {{ text }}
-    {% endapply %}
+    <content class="sm:grid sm:grid-cols-1 md:grid-cols-4 gap-3">
+        <article class="md:col-span-3">
+            <a href="{{ path('app_blog') }}"><i class="gg-chevron-left"></i> Retour au Blog</a>
 
+            {% apply markdown_to_html %}
+                {{ article.text }}
+            {% endapply %}
+
+            {% if previous is not empty %}
+            <a class="float-left" href="{{ previous }}">
+                <i class="gg-chevron-left"></i>
+                Article précédent
+            </a>
+            {% endif %}
+            {% if next is not empty %}
+                <a class="float-right" href="{{ next }}">
+                    Article suivant
+                    <i class="gg-chevron-right"></i>
+                </a>
+            {% endif %}
+
+        </article>
+
+        <aside class="col-span-1">
+            <ul class="tags">
+                {% for tag in article.data.tags %}
+                    <li>{{ tag }}</li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </content>
 {% endblock %}

@@ -21,18 +21,25 @@
                 <li><a href="{{ path('app_index') }}">Accueil</a></li>
                 <li><a href="{{ path('app_blog') }}">Blog</a></li>
                 <li><a href="#">Cartographie</a></li>
-                <li><a href="#">A propos</a></li>
                 <li><a href="{{ path('app_contact') }}">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="layout-maxed">
+    <section class="layout-maxed">
         {% block body %}{% endblock %}
-    </div>
+    </section>
 
-    <footer>
-
+    <footer class="footer">
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_apropos') }}">A propos</a></li>
+                <li><a href="{{ path('app_changelog') }}">Changelog</a></li>
+                <li>
+                    <a target="_blank" href="https://twitter.com/EssenceHg"><i class="gg-twitter"></i> Twitter</a>
+                </li>
+            </ul>
+        </nav>
     </footer>
 
     </body>

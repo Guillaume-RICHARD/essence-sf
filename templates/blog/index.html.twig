@@ -8,9 +8,9 @@
         {{ text }}
     {% endapply %}
 
-    <div class="layout-hero blog">
-        <div class="grid grid-cols-3">
-        {% for article in articles %}
+    <div class="blog">
+        <div class="sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+            {% for article in articles %}
                 <div class="mx-16">
                     <h3><a href="{{ path('app_article', {'id':article.data.id}) }}">{{ article.data.title }}</a></h3>
                     <p>
@@ -19,7 +19,7 @@
                         {% endapply %}
                     </p>
                 </div>
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
 
