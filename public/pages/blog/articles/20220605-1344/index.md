@@ -1,14 +1,14 @@
 ---
-id: 20220601-1200
+id: 20220605-1344
 layout: blog
-title: News du 01/06/2022
+title: News du 05/06/2022
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus porttitor, scelerisque erat sed, iaculis massa. Donec et leo.
 tags:
 - News
 - Prix
 ---
 
-## News du 27/05/2022 (Partie 2)
+## News du 05/06/2022
 ![cute-cat](/img/cartoon-cat/cute-cat.gif)
 ![mochi-mochimochi](/img/cartoon-cat/mochi-mochimochi.gif)
 

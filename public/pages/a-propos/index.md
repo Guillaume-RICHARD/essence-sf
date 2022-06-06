@@ -1,20 +1,21 @@
 ---
 layout: Page
-title: Changelog
-description: Historique du Changelog
+title: A propos de nous
+description: Plateforme partageant (via l'open-data) les prix des carburants du Ministère de l'Économie, des Finances et de la Souveraineté industrielle
 ---
-# Changelog
-Toutes les modifications notables apportées à ce projet seront documentées dans ce fichier.
+# A propos de nous
 
-## [Unreleased]
-## [0.0.2] - 2014-07-10
-### Added
-- Mise en place des fichiers CHANGELOG, CODE_OF_CONDUCT & CONTRIBUTING
+1. Partager l’histoire de la création de l’entreprise
+2. Documentez la mission et la vision
 
-## [0.0.1] - 2022-05
-### Added
-- Initialisation du project avec une configuration basique
-- Initialisation du *webpack encore bundle* pour la gestion des assets (CSS, etc...)
-- Initialisation des fichiers YAML pour la gestion des contenus
-- Ajout des Services
-- Création des premières pages avec du Lorem Ipsum
+Que tente de résoudre votre entreprise ? Où va-t-elle ? Terminez la page À propos de nous en détaillant les mesures que vous prenez pour transformer l’entreprise selon votre vision ultime.
+
+Grâce à ces quatre éléments, vous créerez une page À propos de nous exceptionnelle qui épatera les prospects et convertira de nouveaux clients.
+
+En combinant ces éléments avec le bon constructeur de site web et une conception de page appropriée, vous transformerez un visiteur en client.
+
+Il est important de ne pas oublier ce que veulent vos clients, également.
+
+Les utilisateurs de votre public cible veulent voir votre déclaration de mission, une preuve sociale et un exemple d’utilisation de votre produit. Ces éléments sur votre page web À propos de nous renforceront la confiance du public cible.
+
+Maintenant, regardons quelques entreprises qui se sont faites les championnes de ces éléments et qui leur ont donné vie.

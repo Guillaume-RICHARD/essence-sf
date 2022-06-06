@@ -1,14 +1,19 @@
 ---
-id: 20220527-2052
+id: 20220601-1200
 layout: blog
-title: News du 27/05/2022 (Partie 2)
+title: News du 01/06/2022
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus porttitor, scelerisque erat sed, iaculis massa. Donec et leo.
 tags:
 - News
 - Prix
+- essence
+- Tag 1
+- Tag 2
+- Tag 3
+- Tag 4
 ---
 
-## News du 27/05/2022 (Partie 2)
+## News du 01/06/2022
 ![cute-cat](/img/cartoon-cat/cute-cat.gif)
 ![mochi-mochimochi](/img/cartoon-cat/mochi-mochimochi.gif)
 
