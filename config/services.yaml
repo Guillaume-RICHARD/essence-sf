@@ -6,6 +6,12 @@
 parameters:
 
 services:
+    App\Command\CreateArticleCommand:
+        tags:
+            - { name: 'console.command', command: 'create-content' }
+    App\Command\DeleteArticleCommand:
+        tags:
+            - { name: 'console.command', command: 'delete-content' }
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
