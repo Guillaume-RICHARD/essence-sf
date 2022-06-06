@@ -29,17 +29,23 @@ HELP_FUN = \
     }; \
 	print ""; }
 
-help: ##@help Show this help.
+help: ##@Help Show this help.
 	@perl -e '$(HELP_FUN)' $(MAKEFILE_LIST)
 
-test: ##@test Running PHPUnit Tests
+test: ##@Test Running PHPUnit Tests
 	php bin/phpunit
 
-rebuild: ##@encore Encore rebuild
+rebuild: ##@Encore Encore rebuild
 	./node_modules/.bin/encore dev
 
-watch: ##@encore Encore rebuild --watch
+watch: ##@Encore Encore rebuild --watch
 	./node_modules/.bin/encore dev --watch
 
-cache: ##@symfony vide le cache
+cache: ##@Symfony vide le cache
 	php bin/console cache:clear
+
+article: ##@Application Créer contenu pour la partie Blog
+	php bin/console app:create-content $(int)
+
+delarticle: ##@Application Supprime tous les articles de la partie blog
+	php bin/console app:delete-content
