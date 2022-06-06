@@ -18,9 +18,13 @@ class IndexController extends AbstractController
         $string  = $txt->read();
         extract($string, EXTR_PREFIX_SAME,"tdt");
 
+        $txt2    = new MdService('blog');
+        $articles  = $txt2->readAllArticles(4);
+
         return $this->render("index/index.html.twig", [
-            'data'  => $data,
-            'text'  => $content
+            'data'      => $data,
+            'text'      => $content,
+            'articles'  => $articles
         ]);
     }
 }

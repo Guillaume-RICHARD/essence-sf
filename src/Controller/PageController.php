@@ -8,42 +8,35 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class BlogController extends AbstractController
+class PageController extends AbstractController
 {
     /**
-     * @Route("/blog", name="app_blog")
+     * @Route("/changelog", name="app_changelog")
      */
-    public function index(): Response
+    public function changelog(): Response
     {
-        $txt    = new MdService('blog');
+        $txt    = new MdService('changelog');
         $string  = $txt->read();
         extract($string, EXTR_PREFIX_SAME,"tdt");
 
-        $articles  = $txt->readAllArticles();
-
-        return $this->render('blog/index.html.twig', [
+        return $this->render('pages/changelog.html.twig', [
             'data'      => $data,
-            'text'      => $content,
-            'articles'  => $articles
+            'text'      => $content
         ]);
     }
 
     /**
-     * @Route("/blog/article/{id}", name="app_article")
+     * @Route("/a-propos", name="app_apropos")
      */
-    public function articles(Request $request): Response
+    public function apropos(): Response
     {
-        $txt    = new MdService('blog');
-        $route  = $request->attributes->get('_route_params');
+        $txt    = new MdService('a-propos');
+        $string  = $txt->read();
+        extract($string, EXTR_PREFIX_SAME,"tdt");
 
-        if ($route['id'] ) {
-            $string  = $txt->readArticle($route['id']);
-            extract($string, EXTR_PREFIX_SAME,"tdt");
-
-            return $this->render('blog/article.html.twig', [
-                'data'      => $data,
-                'text'      => $content
-            ]);
-        }
+        return $this->render('pages/a-propos.html.twig', [
+            'data'      => $data,
+            'text'      => $content
+        ]);
     }
 }

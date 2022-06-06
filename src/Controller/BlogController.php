@@ -41,8 +41,9 @@ class BlogController extends AbstractController
             extract($string, EXTR_PREFIX_SAME,"tdt");
 
             return $this->render('blog/article.html.twig', [
-                'data'      => $data,
-                'text'      => $content
+                'article' => $article,
+                'previous' => $previous,
+                'next' => $next,
             ]);
         }
     }
