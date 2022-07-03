@@ -4,8 +4,8 @@
 {% block description %}{{ article.data.description }}{% endblock %}
 
 {% block body %}
-    <content class="sm:grid sm:grid-cols-1 md:grid-cols-4 gap-3">
-        <article class="md:col-span-3">
+    <content class="grid grid-cols-4 gap-3">
+        <article class="col-span-3">
             <a href="{{ path('app_blog') }}"><i class="gg-chevron-left"></i> Retour au Blog</a>
 
             {% apply markdown_to_html %}
