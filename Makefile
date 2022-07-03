@@ -1,10 +1,9 @@
 .SILENT:
-.PHONY: all install uninstall clean dist
+.PHONY: help
 .DEFAULT_GOAL= help
 
 include .env
-
-.PHONY: help
+export
 
 #COLORS
 GREEN  := $(shell tput -Txterm setaf 2)
@@ -32,8 +31,26 @@ HELP_FUN = \
 help: ##@Help Show this help.
 	@perl -e '$(HELP_FUN)' $(MAKEFILE_LIST)
 
-test: ##@Test Running PHPUnit Tests
-	php bin/phpunit
+phpunit: ##@Test Running PHPUnit Tests
+	php bin/phpunit >> phpunit.txt
+
+phpstan: ##@Test Running phpstan Tests
+	if [ ! -d $(FILE_TEST) ]; then mkdir $(FILE_TEST); fi;
+	if [ -f $(FILE_TEST)/phpstan.txt ]; then rm $(FILE_TEST)/phpstan.txt; fi;
+	vendor/bin/phpstan analyse --configuration phpstan-config.neon >> $(FILE_TEST)/phpstan.txt
+
+phpcsfixer: ##@Test Running phpcsfixer
+	php /usr/local/bin/php-cs-fixer fix --allow-risky=yes
+
+phploc: ##@Test Running phploc
+	if [ ! -d $(FILE_TEST) ];then mkdir $(FILE_TEST); fi;
+	if [ -f $(FILE_TEST)/phploc.txt ]; then rm $(FILE_TEST)/phploc.txt; fi;
+	php phploc.phar config src tests public >> $(FILE_TEST)/phploc.txt
+
+phpmd: ##@Test Running phpmd
+	if [ ! -d $(FILE_TEST) ];then mkdir $(FILE_TEST); fi;
+	if [ -f $(FILE_TEST)/phpmd.txt ]; then rm $(FILE_TEST)/phpmd.txt; fi;
+	vendor/bin/phpmd config/ src/Controller/ tests/ public/ text phpmd.xml >> $(FILE_TEST)/phpmd.txt
 
 rebuild: ##@Encore Encore rebuild
 	./node_modules/.bin/encore dev
@@ -44,7 +61,7 @@ watch: ##@Encore Encore rebuild --watch
 cache: ##@Symfony vide le cache
 	php bin/console cache:clear
 
-article: ##@Application Créer contenu pour la partie Blog
+article: ##@Application Créer contenu pour la partie Blog (params int : 1 à 100)
 	php bin/console app:create-content $(int)
 
 delarticle: ##@Application Supprime tous les articles de la partie blog
