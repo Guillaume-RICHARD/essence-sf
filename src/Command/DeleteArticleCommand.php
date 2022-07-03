@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // src/Command/CreateUserCommand.php
 // https://symfony.com/doc/current/console.html
 
@@ -11,6 +13,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DeleteArticleCommand extends Command
 {
+    private string $dir = '';
+
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'app:delete-content';
 
@@ -24,10 +28,10 @@ class DeleteArticleCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         // Se placer dans le dossier public/pages/blog/articles
-        $this->dir = __DIR__."/../../".$_SERVER['FILE_MD']."blog/articles/";
+        $this->dir = __DIR__.'/../../'.$_SERVER['FILE_MD'].'blog/articles/';
 
         $this->deleteTree($this->dir); // On vide le contenu de notre dossier
-        // rmdir($this->dir); // Et on le supprime
+        mkdir($this->dir, 0777); // Et on le recréé
 
         return Command::SUCCESS;
 
@@ -36,15 +40,16 @@ class DeleteArticleCommand extends Command
         // return Command::FAILURE;
     }
 
-    protected function deleteTree($dir){
-        foreach(glob($dir . "/*") as $element){
-            if(is_dir($element)){
-                $this->deleteTree($element); // On rappel la fonction deleteTree
-                rmdir($element); // Une fois le dossier courant vidé, on le supprime
-            } else { // Sinon c'est un fichier, on le supprime
-                unlink($element);
+    protected function deleteTree(string $directory): void
+    {
+        foreach (new \DirectoryIterator($directory) as $item) {
+            if ($item->isFile()) {
+                unlink($item->getRealPath());
             }
-            // On passe à l'élément suivant
+            if (!$item->isDot() && $item->isDir()) {
+                $this->deleteTree($item->getRealPath());
+            }
         }
+        rmdir($directory);
     }
 }

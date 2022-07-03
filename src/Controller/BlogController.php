@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Services\MdService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends AbstractController
 {
@@ -15,16 +17,19 @@ class BlogController extends AbstractController
      */
     public function index(): Response
     {
-        $txt    = new MdService('blog');
-        $string  = $txt->read();
-        extract($string, EXTR_PREFIX_SAME,"tdt");
+        $data = [];
+        $content = '';
 
-        $articles  = $txt->readAllArticles();
+        $txt = new MdService('blog');
+        $string = (array) $txt->read();
+        extract($string, EXTR_OVERWRITE, 'tdt');
+
+        $articles = $txt->readAllArticles();
 
         return $this->render('blog/index.html.twig', [
-            'data'      => $data,
-            'text'      => $content,
-            'articles'  => $articles
+            'data' => $data,
+            'text' => $content,
+            'articles' => $articles,
         ]);
     }
 
@@ -33,18 +38,21 @@ class BlogController extends AbstractController
      */
     public function articles(Request $request): Response
     {
-        $txt    = new MdService('blog');
-        $route  = $request->attributes->get('_route_params');
+        $data = $article = [];
+        $content = $previous = $next = '';
 
-        if ($route['id'] ) {
-            $string  = $txt->readArticle($route['id']);
-            extract($string, EXTR_PREFIX_SAME,"tdt");
+        $txt = new MdService('blog');
+        $route = (array) $request->attributes->get('_route_params');
 
-            return $this->render('blog/article.html.twig', [
-                'article' => $article,
-                'previous' => $previous,
-                'next' => $next,
-            ]);
+        if (array_key_exists('id', $route)) {
+            $string = $txt->readArticle((string) $route['id']);
+            extract($string, EXTR_OVERWRITE, 'tdt');
         }
+
+        return $this->render('blog/article.html.twig', [
+            'article' => $article,
+            'previous' => $previous,
+            'next' => $next,
+        ]);
     }
 }

@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Services\MdService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends AbstractController
 {
@@ -15,13 +16,16 @@ class PageController extends AbstractController
      */
     public function changelog(): Response
     {
-        $txt    = new MdService('changelog');
-        $string  = $txt->read();
-        extract($string, EXTR_PREFIX_SAME,"tdt");
+        $data = [];
+        $content = '';
+
+        $txt = new MdService('changelog');
+        $string = (array)$txt->read();
+        extract($string, EXTR_OVERWRITE, 'tdt');
 
         return $this->render('pages/changelog.html.twig', [
-            'data'      => $data,
-            'text'      => $content
+            'data' => $data,
+            'text' => $content,
         ]);
     }
 
@@ -30,13 +34,16 @@ class PageController extends AbstractController
      */
     public function apropos(): Response
     {
-        $txt    = new MdService('a-propos');
-        $string  = $txt->read();
-        extract($string, EXTR_PREFIX_SAME,"tdt");
+        $data = $article = [];
+        $content = $previous = $next = '';
+
+        $txt = new MdService('a-propos');
+        $string = (array)$txt->read();
+        extract($string, EXTR_OVERWRITE, 'tdt');
 
         return $this->render('pages/a-propos.html.twig', [
-            'data'      => $data,
-            'text'      => $content
+            'data' => $data,
+            'text' => $content,
         ]);
     }
 }

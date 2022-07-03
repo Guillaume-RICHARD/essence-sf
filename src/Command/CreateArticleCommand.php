@@ -1,20 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 // src/Command/CreateUserCommand.php
 // https://symfony.com/doc/current/console.html
 
 namespace App\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Output\OutputInterface;
-
 use Faker;
-
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateArticleCommand extends Command
 {
+    public string $dir = '';
+    public int $content = 0;
+
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'app:create-content';
 
@@ -31,20 +34,26 @@ class CreateArticleCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $faker = Faker\Factory::create('fr_FR');
-        $content = (int)$input->getArgument('content'); // transformation obligatoire en Int
 
-        if ($content === 0)
+        try {
+            $this->content = \intval($input->getArgument('content')); // transformation obligatoire en Int
+        } catch (\Exception $e) {
+            var_dump(Command::INVALID);
+        }
+
+        if (0 === $this->content) {
             return Command::INVALID;
+        }
 
         // Se placer dans le dossier public/pages/blog/articles
-        $this->dir = __DIR__."/../../".$_SERVER['FILE_MD']."blog/articles/";
+        $this->dir = __DIR__.'/../../'.$_SERVER['FILE_MD'].'blog/articles/';
 
-        for ($i = 0; $i < $content; $i++) {
+        for ($i = 0; $i < $this->content; ++$i) {
             // Créer dossier sous la forme YYYYMMDD-HHMMSS
-            $path   = $faker->date('Ymd-Hi');
-            $desc   = $faker->text();
-            $lorem  = $faker->paragraph();
-            $word   = $faker->word();
+            $path = $faker->date('Ymd-Hi');
+            $desc = $faker->text();
+            $lorem = $faker->paragraph();
+            $word = $faker->word();
 
             $data = '---'.PHP_EOL;
             $data .= 'id: '.$path.PHP_EOL;

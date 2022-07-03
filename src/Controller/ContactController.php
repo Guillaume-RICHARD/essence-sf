@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Services\MdService;
@@ -14,13 +16,16 @@ class ContactController extends AbstractController
      */
     public function index(): Response
     {
-        $txt    = new MdService('contact');
-        $string  = $txt->read();
-        extract($string, EXTR_PREFIX_SAME,"tdt");
+        $data = [];
+        $content = '';
+
+        $txt = new MdService('contact');
+        $string = (array)$txt->read();
+        extract($string, EXTR_OVERWRITE, 'tdt');
 
         return $this->render('contact/index.html.twig', [
-            'data'  => $data,
-            'text'  => $content
+            'data' => $data,
+            'text' => $content,
         ]);
     }
 }
