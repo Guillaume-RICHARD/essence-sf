@@ -5,25 +5,31 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Services\MdService;
+use App\Services\Xml\XmlService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ContactController extends AbstractController
+class CartographieController extends AbstractController
 {
     /**
-     * @Route("/contact", name="app_contact")
+     * @Route("/cartographie", name="app_cartographie")
      */
     public function index(): Response
     {
         $data = [];
         $content = '';
 
-        $txt = new MdService('contact');
+        $txt = new MdService('cartographie');
         $string = (array)$txt->read();
         extract($string, EXTR_OVERWRITE, 'tdt');
 
-        return $this->render('contact/index.html.twig', [
+        $select = ['id', 'latitude', 'longitude', 'cp'];
+        $limit = 1;
+        $xml = (new XmlService('instantane'))->request($select);
+        // var_dump($xml); die;
+
+        return $this->render('cartographie/index.html.twig', [
             'data' => $data,
             'text' => $content,
         ]);
