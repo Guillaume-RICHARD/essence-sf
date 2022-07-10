@@ -9,9 +9,9 @@
     {% endapply %}
 
     <div class="blog">
-        <div class="sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+        <div class="articles">
             {% for article in articles %}
-                <div class="mx-16">
+                <div class="article">
                     <h3><a href="{{ path('app_article', {'id':article.data.id}) }}">{{ article.data.title }}</a></h3>
                     <p>
                         {% apply markdown_to_html %}

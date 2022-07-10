@@ -4,26 +4,30 @@
 {% block description %}{{ data.description }}{% endblock %}
 
 {% block body %}
-        {% apply markdown_to_html %}
-                {{ text }}
-        {% endapply %}
-
-        <div class="blog">
-                <h2>Dernières News</h2>
-                <div class="sm:grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
-                        {% for article in articles %}
-                                <div class="mx-16">
-                                        <h3><a href="{{ path('app_article', {'id':article.data.id}) }}">{{ article.data.title }}</a></h3>
-                                        <p>
-                                                {% apply markdown_to_html %}
-                                                        {{ article.data.description }}
-                                                {% endapply %}
-                                        </p>
-                                </div>
-                        {% endfor %}
+        <div class="index">
+                <div class="col-2">
+                {% apply markdown_to_html %}
+                        {{ text }}
+                {% endapply %}
                 </div>
-                <p class="float-right">
-                        <a class="white-icon" href="{{ path('app_blog') }}">Voir les autres articles <i class="gg-chevron-right"></i></a>
-                </p>
+
+                <div class="blog">
+                        <h2>Dernières News</h2>
+                        <div class="articles">
+                                {% for article in articles %}
+                                        <div class="article">
+                                                <h3><a href="{{ path('app_article', {'id':article.data.id}) }}">{{ article.data.title }}</a></h3>
+                                                <p>
+                                                        {% apply markdown_to_html %}
+                                                                {{ article.data.description }}
+                                                        {% endapply %}
+                                                </p>
+                                        </div>
+                                {% endfor %}
+                        </div>
+                        <p class="last">
+                                <a class="float-right white-icon" href="{{ path('app_blog') }}">Voir les autres articles <i class="gg-chevron-right"></i></a>
+                        </p>
+                </div>
         </div>
 {% endblock %}

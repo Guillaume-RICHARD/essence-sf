@@ -20,13 +20,13 @@
             <ul>
                 <li><a href="{{ path('app_index') }}">Accueil</a></li>
                 <li><a href="{{ path('app_blog') }}">Blog</a></li>
-                <li><a href="#">Cartographie</a></li>
+                <li><a href="{{ path('app_cartographie') }}">Cartographie</a></li>
                 <li><a href="{{ path('app_contact') }}">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="layout-maxed">
+    <section class="layout">
         {% block body %}{% endblock %}
     </section>
 

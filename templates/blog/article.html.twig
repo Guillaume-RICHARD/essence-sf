@@ -4,8 +4,8 @@
 {% block description %}{{ article.data.description }}{% endblock %}
 
 {% block body %}
-    <content class="grid grid-cols-4 gap-3">
-        <article class="col-span-3">
+    <content class="blog_article">
+        <article>
             <a href="{{ path('app_blog') }}"><i class="gg-chevron-left"></i> Retour au Blog</a>
 
             {% apply markdown_to_html %}
@@ -27,7 +27,7 @@
 
         </article>
 
-        <aside class="col-span-1">
+        <aside>
             <ul class="tags">
                 {% for tag in article.data.tags %}
                     <li>{{ tag }}</li>
