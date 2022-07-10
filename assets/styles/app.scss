@@ -4,10 +4,13 @@
 @import 'abstracts/placeholders';
 
 @import "vendor/knacss/knacss";
-@import "vendor/cssgg/all";
 
+@import "base/normalize";
 @import 'base/reset';
 @import 'base/typography';
+
+// @import "vendor/cssgg/all";
+@import "vendor/cssgg/index";
 
 @import 'layout/navigation';
 @import 'layout/grid';
@@ -24,6 +27,7 @@
 
 @import 'pages/home';
 @import 'pages/blog';
+@import 'pages/cartographie';
 @import 'pages/contact';
 
 @import 'themes/theme';

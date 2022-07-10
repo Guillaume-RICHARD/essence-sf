@@ -1,3 +1,14 @@
+* {
+  list-style: none;
+}
+
+a {
+  display: inline-flex;
+
+  &.dark-icon {@include icon-color($navig_bg_color);}
+  &.white-icon {@include icon-color;}
+}
+
 .example-wrapper {
   margin: 1em auto;
   max-width: 800px;
@@ -10,9 +21,13 @@
   }
 }
 
-a {
-  display: inline-flex;
+.float-right {  float: right;}
+.float-left {  float: left;}
 
-  &.dark-icon {@include icon-color($navig_bg_color);}
-  &.white-icon {@include icon-color;}
+.col-2 {
+  width: 94%;
+  margin: 20px auto;
+  column-count: 2;
+  column-width: 100px;
+
 }
